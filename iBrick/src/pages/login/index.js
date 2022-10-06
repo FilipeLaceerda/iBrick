@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
+import React, { useState } from 'react';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
-const Login = () => {
+const Login = ({ navigation }) => {
   const [text, setText] = useState('');
   return (
     <View style={styles.component}>
@@ -10,18 +10,21 @@ const Login = () => {
         style={styles.input}
         placeholder="Email"
         defaultValue={text}
-        onChangeText={newText => setText(newText)}
-      />
+        onChangeText={newText => setText(newText)} />
       <TextInput style={styles.input} placeholder="Senha" />
-      <Button style={styles.button} title="Login" onPress="" />
+      <Button style={styles.button} title="Login" onPress={() => navigation.navigate('FeedIBrick')} />
     </View>
   );
 };
 
+Login.navigationOptions = {
+  title: 'Login',
+}
+
 const styles = StyleSheet.create({
   text: {
     fontSize: 50,
-    color: 'white',
+    color: 'black',
   },
   component: {
     flex: 1,
