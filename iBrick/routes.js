@@ -3,7 +3,6 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Login from './src/pages/login';
 import FeedIBrick from './src/pages/feedIBrick';
 import Detalhes from './src/pages/detalhes';
-import PassoStack from './src/components/PassoStack';
 
 const Stack = createStackNavigator()
 

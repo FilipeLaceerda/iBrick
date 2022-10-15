@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import {Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import Logo from '../../assets/imgs/Logo.png';
 
 const Login = ({ navigation }) => {
   const [text, setText] = useState('');
+  const login = 'Login';
   return (
     <View style={styles.component}>
-      <Text style={styles.text}>Hello, IBrick</Text>
+      <Image source={Logo} />
+      <Text style={styles.text}>IBrick</Text>
       <TextInput
         style={styles.input}
         placeholder="Email"
         defaultValue={text}
         onChangeText={newText => setText(newText)} />
       <TextInput style={styles.input} placeholder="Senha" />
-      <Button style={styles.button} title="Login" onPress={() => navigation.navigate('FeedIBrick')} />
+      <TouchableOpacity style={styles.button}  title="Login" onPress={() => navigation.navigate('FeedIBrick')}> 
+        <Text style={styles.textPress}>{login}</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -22,6 +27,10 @@ Login.navigationOptions = {
 }
 
 const styles = StyleSheet.create({
+  textPress: {
+    fontSize: 20,
+    color: "#fff"
+  },
   text: {
     fontSize: 50,
     color: 'black',
@@ -39,13 +48,16 @@ const styles = StyleSheet.create({
     borderColor: 'thistle',
   },
   button: {
+    marginTop: 20,
+    width: 180,
+    height: 45,
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 4,
     elevation: 3,
-    backgroundColor: 'blue',
+    backgroundColor: '#36498E',
   },
 });
 
