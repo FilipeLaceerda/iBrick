@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet,  View } from 'react-native';
 import CardComponent from '../../components/Card';
 
 
-const FeedIBrick = () => {
+const FeedIBrick = ({navigation}) => {
   return (
     <View style={Styles.container}>
-      <CardComponent></CardComponent>
+      <CardComponent navigation={navigation}></CardComponent>
     </View>
   );
 };

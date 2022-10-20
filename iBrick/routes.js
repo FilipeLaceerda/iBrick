@@ -17,12 +17,12 @@ export default props => (
         </Stack.Screen>
         <Stack.Screen name="FeedIBrick">
             {props => (
-                    <FeedIBrick />
+                    <FeedIBrick navigation={props.navigation} />
             )}
         </Stack.Screen>
         <Stack.Screen name="Detalhes">
             {props => (
-                    <Detalhes {...props} />
+                    <Detalhes  navigation={props.navigation} />
             )}
         </Stack.Screen>
     </Stack.Navigator>
