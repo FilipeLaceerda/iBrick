@@ -1,32 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  FlatList,
-  TextInput,
-  Button,
-  TouchableOpacity,
-  ActivityIndicator,
+  ActivityIndicator, FlatList, Image, StyleSheet, Text, TextInput, TouchableOpacity, View
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Lojas from '../../assets/lojas.json';
 import Brick from '../../assets/imgs/material.png';
 import Star from '../../assets/imgs/star.png';
 import Timer from '../../assets/imgs/Vector.png';
+import Lojas from '../../assets/lojas.json';
 
 const data = Lojas;
 
 const perPage = 4;
 
-const CardComponent = navigation => {
+const CardComponent = ({navigation}) => {
   const [searchText, setSearchText] = useState('');
-  const [list, setList] = useState(data.feeds);
+  const [list, setList] = useState([]);
+  const [page, setPage] = useState(0);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (searchText === '') {
-      setList(data.feeds);
+      loadRepositories();
     } else {
       setList(
         data.feeds.filter(
@@ -37,36 +30,23 @@ const CardComponent = navigation => {
     }
   }, [searchText])
 
+
   let renderFooter = () => {
-    if (!this.state.loading) return null;
+    if (loading) return null;
     return (
-      <View style={styles.loading}>
+      <View style={Styles.loading}>
         <ActivityIndicator />
       </View>
     );
   };
 
-  let loadRepositories = () => {
-    const {proximaPagina, feeds} = this.state;
-    const idInicial = proximaPagina * perPage + 1;
-    const idFinal = idInicial + perPage - 1;
-    const maisFeeds = LojasFeed.feeds.filter(
-      feed => feed._id >= idInicial && feed._id <= idFinal,
-    );
-    if (maisFeeds.length) {
-      this.setState({
-        proximaPagina: proximaPagina + 1,
-        feeds: [...feeds, ...maisFeeds],
+ function loadRepositories(){
+    setLoading(true);
+    const response = data.feeds.slice(page, page + 3);
+    setList([...list, ...response]);
 
-        atualizando: false,
-        carregando: false,
-      });
-    } else {
-      this.setState({
-        atualizando: false,
-        carregando: false,
-      });
-    }
+    setPage(page + 3);
+    setLoading(false);
   };
   return (
     <>
@@ -80,13 +60,14 @@ const CardComponent = navigation => {
         style={Styles.container}
         data={list}
         keyExtractor={item => item._id}
-        onEndReached={this.loadRepositories}
+        onEndReached={() => loadRepositories()}
         onEndReachedThreshold={0.1}
+        ListFooterComponent={renderFooter}
         renderItem={({item}) => {
           return (
             <TouchableOpacity
               style={Styles.card}
-              onPress={() => navigation.navigate('Detalhes')}>
+              onPress={() => navigation.navigate('Detalhes', {item: item})}>
               <View>
                 <Image style={Styles.image} source={Brick} />
                 <View style={Styles.contentView}>
@@ -165,13 +146,17 @@ const Styles = StyleSheet.create({
     height: 40,
   },
   textInputStyle: {
-    width: 250,
+    width: "90%",
     height: 40,
     borderWidth: 1,
     paddingLeft: 20,
     margin: 5,
     borderColor: '#0066CC',
   },
+  loading: {
+    textAlign: 'center',
+    marginVertical: 20
+  }
 });
 
 export default CardComponent;

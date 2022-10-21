@@ -22,7 +22,7 @@ export default props => (
         </Stack.Screen>
         <Stack.Screen name="Detalhes">
             {props => (
-                    <Detalhes  navigation={props.navigation} />
+                    <Detalhes  navigation={props.navigation} route={props.route} />
             )}
         </Stack.Screen>
     </Stack.Navigator>
