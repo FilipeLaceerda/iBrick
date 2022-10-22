@@ -35,7 +35,7 @@ const CardComponent = ({navigation}) => {
     if (loading) return null;
     return (
       <View style={Styles.loading}>
-        <ActivityIndicator />
+        <ActivityIndicator size='large' />
       </View>
     );
   };
@@ -154,7 +154,10 @@ const Styles = StyleSheet.create({
     borderColor: '#0066CC',
   },
   loading: {
-    textAlign: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'left',
     marginVertical: 20
   }
 });

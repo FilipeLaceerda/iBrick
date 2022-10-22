@@ -1,7 +1,8 @@
 import React from "react";
 import { Text, Image, View, StyleSheet } from "react-native";
 
-import Avatar from '../../assets/imgs/bricks.png'
+import Avatar from '../../assets/imgs/bricks.png';
+import Star from '../../assets/imgs/star.png';
 
 
 const Detalhes = ({route, navigation}) => {
@@ -13,6 +14,14 @@ const Detalhes = ({route, navigation}) => {
             <View>
                 <Text style={Styles.name}>{item.name}</Text>
                 <Text style={Styles.description}>{item.descricao}</Text>
+            </View>
+            <View style={Styles.contentInfo}>
+                <Text style={Styles.text}>{item.end}</Text>
+                <Text style={Styles.text}>{item.tel}</Text>
+                <View style={Styles.avaliation}>
+                <Image source={Star}/>
+                <Text style={Styles.text}>{item.avaliation}</Text>
+                </View>
             </View>
         </View>
     );
@@ -34,6 +43,21 @@ const Styles = StyleSheet.create({
     description: {
         fontSize: 16,
         textAlign: 'center'
+    },
+    contentInfo: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-evenly' 
+    },
+    avaliation:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    text: {
+        fontSize: 18,
+        fontWeight: "600",
+        color: "#000"
     }
 })
 

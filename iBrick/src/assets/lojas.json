@@ -8,7 +8,9 @@
       "price": "R$ 9,99",
       "avatar": "",
       "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-      "likes": 0
+      "likes": 0,
+      "tel": "(12) 3456-0000",
+      "end": "Av. frei benjamin - 500"
     },
     {
       "_id": 2,
@@ -18,7 +20,9 @@
       "price": "R$ 9,99",
       "avatar": "rayban.jpeg",
       "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-      "likes": 0
+      "likes": 0,
+      "tel": "(12) 3456-0001",
+      "end": "Av. brumado - 500"
     },
     {
       "_id": 3,
@@ -28,7 +32,9 @@
       "price": "R$ 9,99",
       "avatar": "hstern.jpeg",
       "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-      "likes": 0
+      "likes": 0,
+      "tel": "(12) 3456-0002",
+      "end": "Av. luis eduardo magalhães - 500"
     },
     {
       "_id": 4,
@@ -38,7 +44,9 @@
       "price": "R$ 9,99",
       "avatar": "hstern.jpeg",
       "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-      "likes": 0
+      "likes": 0,
+      "tel": "(12) 3456-0000",
+      "end": "Av. juracy magalhães - 500"
     },
     {
       "_id": 5,
@@ -48,7 +56,9 @@
       "avaliation": "4.4",
       "price": "R$ 9,99",
       "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-      "likes": 0
+      "likes": 0,
+      "tel": "(12) 3458-0000",
+      "end": "Av. juracy magalhães - 500"
     },
     {
       "_id": 6,
@@ -58,7 +68,9 @@
       "avaliation": "4.4",
       "price": "R$ 9,99",
       "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-      "likes": 0
+      "likes": 0,
+      "tel": "(12) 3458-1000",
+      "end": "Av. juracy magalhães - 500"
     },
     {
       "_id": 7,
@@ -68,7 +80,9 @@
       "avaliation": "4.4",
       "price": "R$ 9,99",
       "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-      "likes": 0
+      "likes": 0,
+      "tel":"(12) 3456-0002",
+      "end": "Av. juracy magalhães - 500"
     },
     {
       "_id": 8,
@@ -78,7 +92,9 @@
       "avaliation": "4.4",
       "price": "R$ 9,99",
       "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-      "likes": 0
+      "likes": 0,
+      "tel": "(12) 3456-0250",
+      "end":"Av. brumado - 500"
     },
     {
       "_id": 9,
@@ -88,7 +104,9 @@
       "avaliation": "4.4",
       "price": "R$ 9,99",
       "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-      "likes": 0
+      "likes": 0,
+      "tel":"(12) 3456-0002",
+      "end":"Av. juracy magalhães - 500"
     },
     {
       "_id": 10,
@@ -98,7 +116,9 @@
       "avaliation": "4.4",
       "price": "R$ 9,99",
       "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-      "likes": 0
+      "likes": 0,
+      "tel": "(12) 3456-2600",
+      "end":"Av. juracy magalhães - 500"
     },
     {
       "_id": 11,
@@ -108,7 +128,9 @@
       "avaliation": "4.4",
       "price": "R$ 9,99",
       "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-      "likes": 0
+      "likes": 0,
+      "tel": "(12) 3456-0680",
+      "end":"Av. juracy magalhães - 500"
     },
     {
       "_id": 12,
@@ -118,7 +140,9 @@
       "avaliation": "4.4",
       "price": "R$ 9,99",
       "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-      "likes": 0
+      "likes": 0,
+      "tel":"(12) 3456-0680",
+      "end":"Av. luis eduardo magalhães - 500"
     },
     {
       "_id": 13,
@@ -128,7 +152,9 @@
       "avaliation": "4.4",
       "price": "R$ 9,99",
       "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-      "likes": 0
+      "likes": 0,
+      "tel":"(12) 3456-0680",
+      "end":"Av. luis eduardo magalhães - 500"
     },
     {
       "_id": 14,
@@ -138,7 +164,9 @@
       "avaliation": "4.4",
       "price": "R$ 9,99",
       "descricao": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-      "likes": 0
+      "likes": 0,
+      "tel":"(12) 3456-2600",
+      "end":"Av. luis eduardo magalhães - 500"
     }
   ]
 }
