@@ -9,5 +9,10 @@
 - Tela de feeds carrega de 3 em 3 em lazyloading, podendo pesquisar pelo o input, clicando no card vai para a tela de detalhes da loja.
 - Tela de detalhes apresenta, telefone, endereço correto, nota de avaliação.
 
+**Backend**
+- cd backend/app
+- npx prisma migrate dev --create-only
+- docker compose up
+
 
 
