@@ -6,6 +6,7 @@ import Brick from '../../assets/imgs/material.png';
 import Star from '../../assets/imgs/star.png';
 import Timer from '../../assets/imgs/Vector.png';
 import Lojas from '../../assets/lojas.json';
+import { feeds } from '../../services/api';
 
 const data = Lojas;
 
@@ -40,13 +41,17 @@ const CardComponent = ({navigation}) => {
     );
   };
 
- function loadRepositories(){
-    setLoading(true);
+ async function loadRepositories(){
+
+  const response = await feeds.get('/').then(res => res.data);
+  console.log(response);
+  return response;
+    /* setLoading(true);
     const response = data.feeds.slice(page, page + 3);
     setList([...list, ...response]);
 
     setPage(page + 3);
-    setLoading(false);
+    setLoading(false); */
   };
   return (
     <>
