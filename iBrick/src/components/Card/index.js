@@ -43,7 +43,10 @@ const CardComponent = ({navigation}) => {
 
  async function loadRepositories(){
 
-  const response = await feeds.get('/').then(res => res.data);
+  const response = await feeds.get('/').then(res => {
+    console.log(res.data)
+    res.data 
+  })
   console.log(response);
   return response;
     /* setLoading(true);

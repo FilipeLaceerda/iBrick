@@ -1,22 +1,7 @@
 FROM node:alpine
-
-WORKDIR /app
-
-COPY package*.json ./
-
-# generated prisma files
-COPY prisma ./prisma/
-
-# COPY ENV variable
-COPY .env ./
-
-# COPY
-COPY . .
-
-RUN npm install
-
-RUN npx prisma generate
-
+RUN node --version
+RUN npm --version
+RUN mkdir /services/
+WORKDIR /services/
+COPY services/ /services/
 EXPOSE 3000
-
-CMD npm start

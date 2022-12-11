@@ -1,18 +1,62 @@
 version: '3'
 
 services:
-  app:
+  users:
     stdin_open: true
     build: .
-    container_name: app
+    container_name: users
+    depends_on:
+      - db
+      - db-server
+    ports:
+      - "3001:3001"
+    expose:
+      - 3001
+    command: /bin/sh -c "cd user && npm install && npm run prisma:start && npm run start"
+    restart: always
+
+  feeds:
+    stdin_open: true
+    build: .
+    container_name: feeds
+    depends_on:
+      - db
+      - db-server
+      - users
+    ports:
+      - "3002:3002"
+    expose:
+      - 3002
+    command: /bin/sh -c "cd feeds && npm install && npm run prisma:start &&  npm run start"
+    restart: always
+
+  detalhes:
+    stdin_open: true
+    build: .
+    container_name: detalhes
+    depends_on:
+      - db
+      - db-server
+      - feeds
+    ports:
+      - "3003:3003"
+    expose:
+      - 3003
+    command: /bin/sh -c "cd detalhes &&  npm install && npm run prisma:start && npm run start"
+    restart: always
+
+  db-server:
+    stdin_open: true
+    build: .
+    container_name: db-server
     depends_on:
       - db
     ports:
-      - "3000:3000"
+      - "3004:3004"
     expose:
-      - 3000
-    command: /bin/sh -c "npm run prisma:start && npm run db:server && npm run start"
-    restart: always
+      - 3004
+    command: /bin/sh -c "npm install && npm run prisma:start && npm run db:server"
+    restart: on-failure
 
   db:
     image: postgres

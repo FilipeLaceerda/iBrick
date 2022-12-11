@@ -8,29 +8,10 @@ datasource db {
 }
 
 model user{
-  @@map(name: "users")
-
   id String  @id @default(uuid())
   name String  @db.VarChar(255)
-  email String 
-  photo String? @default("default.png")
-  verified Boolean? @default(false) 
-  
-  password String
-  role RoleEnumType? @default(user)
-
-  verificationCode String? @db.Text
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@unique([email, verificationCode])
-  @@index([email, verificationCode])
-}
-
-enum RoleEnumType {
-  user
-  admin
+  email String @unique
+  password String 
 }
 
 model lojas{

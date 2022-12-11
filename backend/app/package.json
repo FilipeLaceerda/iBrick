@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.ts",
+    "start": "nodemon src/index.ts",
     "prisma:start": "npx prisma migrate deploy --schema prisma/schema.prisma && npx prisma db push",
     "db:server": "npx ts-node src/utils/db-server.ts"
   },
