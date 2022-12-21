@@ -6,17 +6,29 @@ const app = express()
 
 app.use(express.json())
 
-app.get('/', async (req, res) => {
-  let myCursor: number = 1
-  const lojas = await prisma.lojas.findMany({
-    take: 4,
-    skip: 1,
-    cursor: {
-      id: myCursor
+app.get('/search', async (req, res) => {
+  console.log(req.query)
+  const search = await prisma.lojas.findMany({
+    where: {
+      name: (req.query.search as string)
     }
   })
-  const lastResult: lojas = lojas[3];
-  myCursor = lastResult.id
+  res.json(search)
+})
+
+app.get('/', async (req, res) => {
+  console.log(req.query.page);
+  const page: number = parseInt(req.query.page as string);
+  const lojas = await prisma.lojas.findMany({
+    take: 4,
+    skip: 0,
+    cursor: {
+      id: page
+    },
+    orderBy: {
+      id: 'asc'
+    }
+  })
   res.json(lojas);
 })
 

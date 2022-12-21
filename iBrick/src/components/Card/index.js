@@ -15,19 +15,14 @@ const perPage = 4;
 const CardComponent = ({navigation}) => {
   const [searchText, setSearchText] = useState('');
   const [list, setList] = useState([]);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (searchText === '') {
       loadRepositories();
     } else {
-      setList(
-        data.feeds.filter(
-          (item) =>
-            item.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1
-        )
-      );
+      searchLoja(searchText.toLowerCase());
     }
   }, [searchText])
 
@@ -42,20 +37,22 @@ const CardComponent = ({navigation}) => {
   };
 
  async function loadRepositories(){
-
-  const response = await feeds.get('/').then(res => {
+   const response = await feeds.get(`/`, {params : {page: page}}).then(res => { 
     console.log(res.data)
-    res.data 
-  })
-  console.log(response);
-  return response;
-    /* setLoading(true);
-    const response = data.feeds.slice(page, page + 3);
-    setList([...list, ...response]);
-
-    setPage(page + 3);
-    setLoading(false); */
+    setList([...list, ...res.data]);
+    setPage(res.data[res.data.length -1].id);
+    setLoading(false);
+  }).catch((error) => console.log(error));
   };
+
+  async function searchLoja(search){
+    console.log(search);
+    const response = await feeds.get(`/search`, {params: {search: search}}).then(res => {
+      console.log(res.data);
+      setList([...res.data])
+      setLoading(false);
+    }).catch((error) => console.log(error));
+  }
   return (
     <>
       <View style={Styles.search}>
@@ -67,7 +64,7 @@ const CardComponent = ({navigation}) => {
       <FlatList
         style={Styles.container}
         data={list}
-        keyExtractor={item => item._id}
+        keyExtractor={item => item.id}
         onEndReached={() => loadRepositories()}
         onEndReachedThreshold={0.1}
         ListFooterComponent={renderFooter}
@@ -141,6 +138,11 @@ const Styles = StyleSheet.create({
   viewIcon: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  avaliation:{
+    fontSize: 20,
+    color: '#000',
+    overflow: 'hidden',
   },
   image: {},
   text: {

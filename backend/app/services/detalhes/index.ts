@@ -6,8 +6,13 @@ const app = express()
 
 app.use(express.json())
 
-app.get('/', async (req, res) => {
-  const lojas = await prisma.detail.findMany()
+app.get('/:id', async (req, res) => {
+  const { id } = req.params
+  const lojas = await prisma.detail.findUnique({
+    where: {
+      id: parseInt(id)
+    }
+  })
   res.json(lojas);
 })
 

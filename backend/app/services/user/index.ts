@@ -1,4 +1,4 @@
-import { PrismaClient } from 'prisma/prisma-client';
+import { PrismaClient } from '@prisma/client';
 import express from 'express';
 
 const prisma = new PrismaClient();
@@ -11,11 +11,11 @@ app.get('/', function (_req, res) {
   res.send('hello')
 });
 
-app.get('/user/:id', async function (req, res) {
+app.get('/user/:email', async function (req, res) {
   try {
-    const { id } = req.params
+    const { email } = req.params
     const user = await prisma.user.findUnique({
-      where: { id }
+      where: { email }
     })
 
     res.json(user)
@@ -29,21 +29,19 @@ app.get('/user/:id', async function (req, res) {
 app.post('/user', async function (req, res) {
   try {
     const {
-      id,
       name,
       email,
       password,
     } = req.body
 
     const userExists = await prisma.user.findUnique({
-      where: { id }
+      where: { email }
     })
 
     if (userExists) return;
 
     const user = await prisma.user.create({
       data: {
-        id,
         name,
         email,
         password,

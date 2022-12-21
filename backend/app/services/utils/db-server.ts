@@ -8,54 +8,55 @@ async function dbServer(){
             {    
                name: 'Incomportas',
                time: '60 á 120min',
-               avaliation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eleifend.',
+               avaliation: '4.4',
                price: 'R$ 9,99',
             },
             {    
                name: 'Dois irmãos',
                time: '60 á 120min',
-               avaliation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eleifend.',
+               avaliation: '4.5',
                price: 'R$ 9,99',
             },
             {    
                name: 'Construtelha',
                time: '60 á 120min',
-               avaliation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eleifend.',
+               avaliation: '4.6',
                price: 'R$ 9,99',
             },
             {    
                name: 'Casa bela',
                time: '60 á 120min',
-               avaliation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eleifend.',
+               avaliation: '4.7',
                price: 'R$ 9,99',
             },
             {    
                name: 'Construção Ramos',
                time: '60 á 120min',
-               avaliation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eleifend.',
+               avaliation: '4.2',
                price: 'R$ 9,99',
             },
             {    
                name: 'Dois irmãos filial 2',
                time: '60 á 120min',
-               avaliation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eleifend.',
+               avaliation: '4.6',
                price: 'R$ 9,99',
             },
             {    
                name: 'Teixeirão',
                time: '60 á 120min',
-               avaliation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eleifend.',
+               avaliation: '4.4',
                price: 'R$ 9,99',
             },
             {    
                name: 'Bom de preço',
                time: '60 á 120min',
-               avaliation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eleifend.',
+               avaliation: '4.4',
                price: 'R$ 9,99',
             },
         ]
     })
     console.log('create lojas ', dbServer)
+    dbServerDetail().catch((e) => console.error(e)).finally(async () => await prisma.$disconnect());
     return dbServer;
 }
 
@@ -105,4 +106,3 @@ async function dbServerDetail() {
 }
 
 dbServer().catch((e) => console.error(e)).finally(async () => await prisma.$disconnect()); 
-dbServerDetail().catch((e) => console.error(e)).finally(async () => await prisma.$disconnect());

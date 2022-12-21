@@ -1,11 +1,11 @@
 -- CreateTable
-CREATE TABLE "users" (
-    "id" TEXT NOT NULL,
+CREATE TABLE "user" (
+    "id" SERIAL NOT NULL,
     "name" VARCHAR(255) NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
 
-    CONSTRAINT "users_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "user_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -31,7 +31,7 @@ CREATE TABLE "detail" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
+CREATE UNIQUE INDEX "user_email_key" ON "user"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "detail_deitalId_key" ON "detail"("deitalId");
