@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { StyleSheet, TouchableOpacity, TextInput, View, Text } from "react-native";
+import { StyleSheet, TouchableOpacity, TextInput, View, Text, Alert } from "react-native";
 import { user } from "../../services/api";
 
 const SignUp = ({ navigation }) => {
@@ -21,7 +21,10 @@ const [password, setPassword] = useState('');
         console.log(data);
         
         const response = await user.post('/user', {data}).then(res => {
-            console.log(res.data);
+            if(res.status === 200){
+                navigation.navigate('Login')
+                console.log('Usuário criado com sucesso')
+            }
         })
         console.log(response);
         

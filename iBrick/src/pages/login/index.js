@@ -1,11 +1,37 @@
-import React, { useState } from 'react';
-import {Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, {useState} from 'react';
+import {
+  Alert,
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Logo from '../../assets/imgs/Logo.png';
+import {user} from '../../services/api';
 
-const Login = ({ navigation }) => {
-  const [text, setText] = useState('');
+const Login = ({navigation}) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [boolean, setBoolean] = useState('');
   const login = 'Login';
   const cadastrar = 'Cadastrar Usuário';
+
+  async function loginRegister() {
+    if(email === '' || password === ''){
+      Alert('Campos Obrigatorios');
+    }else {
+      const response = await user.get(`/user/${email}`).then(res => {
+        setBoolean(true);
+      });
+      if (boolean === true) {
+        navigation.navigate('FeedIBrick');
+      } else {
+        Alert('Esse email ainda não foi cadastrado.');
+      }
+    }
+  }
   return (
     <View style={styles.component}>
       <Image source={Logo} />
@@ -13,13 +39,25 @@ const Login = ({ navigation }) => {
       <TextInput
         style={styles.input}
         placeholder="Email"
-        defaultValue={text}
-        onChangeText={newText => setText(newText)} />
-      <TextInput style={styles.input} placeholder="Senha" />
-      <TouchableOpacity style={styles.button}  title="Login" onPress={() => navigation.navigate('FeedIBrick')}> 
+        defaultValue={email}
+        onChangeText={newText => setEmail(newText)}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Senha"
+        defaultValue={password}
+        onChangeText={newText => setPassword(newText)}
+      />
+      <TouchableOpacity
+        style={styles.button}
+        title="Login"
+        onPress={loginRegister}>
         <Text style={styles.textPress}>{login}</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.signUp} title="Cadastrar Usuário" onPress={() => navigation.navigate('SignUp')}>
+      <TouchableOpacity
+        style={styles.signUp}
+        title="Cadastrar Usuário"
+        onPress={() => navigation.navigate('SignUp')}>
         <Text style={styles.textPress}>{cadastrar}</Text>
       </TouchableOpacity>
     </View>
@@ -28,12 +66,12 @@ const Login = ({ navigation }) => {
 
 Login.navigationOptions = {
   title: 'Login',
-}
+};
 
 const styles = StyleSheet.create({
   textPress: {
     fontSize: 20,
-    color: "#fff"
+    color: '#fff',
   },
   text: {
     fontSize: 50,
@@ -73,8 +111,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 4,
     elevation: 3,
-    backgroundColor: '#9400D3'
-  }
+    backgroundColor: '#9400D3',
+  },
 });
 
 export default Login;
