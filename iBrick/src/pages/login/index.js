@@ -19,6 +19,7 @@ const Login = ({navigation}) => {
   const cadastrar = 'Cadastrar Usuário';
 
   async function loginRegister() {
+    console.log('teste branch')
     if(email === '' || password === ''){
       Alert('Campos Obrigatorios');
     }else {
